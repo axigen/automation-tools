@@ -19,7 +19,7 @@ Copyright (c) since 2006, GECAD Technologies. All rights reserved.
 Please send any bugs and/or feedback related to this class to:
   AXIGEN Team <team@axigen.com>
 """
-CVSID='$Id: cli2.py,v 1.25 2010/09/23 14:25:17 alin Exp $'
+CVSID='$Id: cli2.py,v 1.26 2016/02/12 15:08:17 nini Exp $'
 __version__=CVSID.split()[2]
 __all__=['CLI', 'strtime2epoch']
 
@@ -458,7 +458,7 @@ class CLIBase:
     llines=resp.split(CRLF)
     dom=[]
     for line in llines[5:-3]:
-      if int(self.V['version'][0])>=5:
+      if int(self.V['version'].split('.')[0])>=5:
         line=line.split()[0]
       dom.append(line.strip())
     return dom
@@ -471,7 +471,7 @@ class CLIBase:
     """
     self.require_auth()
     cmd='ADD FORWARDER'
-    if int(self.V['version'][0])>=5:
+    if int(self.V['version'].split('.')[0])>=5:
       cmd='ADD GROUP'
     (code, text, resp)=self.parse_resp(self.cmdr('%s NAME "%s"' % (cmd, name)))
     if not code:
@@ -494,7 +494,7 @@ class CLIBase:
     """
     self.require_auth()
     cmd='LIST FORWARDERS'
-    if int(self.V['version'][0])>=5:
+    if int(self.V['version'].split('.')[0])>=5:
       cmd='LIST GROUPS'
     (code, text, resp)=self.parse_resp(self.cmdr(cmd))
     llines=resp.split(CRLF)
@@ -678,7 +678,7 @@ class CLIBase:
     """
     self.require_auth()
     myname='FORWARDER'
-    if int(self.V['version'][0])>=5:
+    if int(self.V['version'].split('.')[0])>=5:
       myname='GROUP'
     (code, text, resp)=self.parse_resp(self.cmdr('UPDATE %s NAME "%s"' % (myname, forwarder)))
     if not code:
@@ -1431,7 +1431,7 @@ class CLI(CLIBase):
     self.update_domain(domain)
     self.update_account(account)
     data=dict(self.get_show())
-    if (int(self.V['version'][0])>6) or (int(self.V['version'][0])==6 and int(self.V['version'][2])>=2):
+    if (int(self.V['version'].split('.')[0])>6) or (int(self.V['version'].split('.')[0])==6 and int(self.V['version'].split('.')[1])>=2):
       self.config_contactinfo()
       data.update(self.get_show())
       self.back()
