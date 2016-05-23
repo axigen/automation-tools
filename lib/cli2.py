@@ -19,7 +19,7 @@ Copyright (c) since 2006, GECAD Technologies. All rights reserved.
 Please send any bugs and/or feedback related to this class to:
   AXIGEN Team <team@axigen.com>
 """
-CVSID='$Id: cli2.py,v 1.26 2016/02/12 15:08:17 nini Exp $'
+CVSID='$Id: cli2.py,v 1.27 2016/05/04 10:44:12 nini@qa1 Exp $'
 __version__=CVSID.split()[2]
 __all__=['CLI', 'strtime2epoch']
 
@@ -247,6 +247,8 @@ class CLIBase:
     _fver=_r.split(CRLF)[0].split('|')
     self.V['fullversion']=_fver[0]
     self.V['version']=self.V['fullversion'].split()[0]
+    if self.V['version'].startswith('0.0.0.0'):
+      self.V['version'] = '999.0.0.0'
     if len(_fver)>1:
       self.V['os']=_fver[1]
       self.V['platform']=_fver[2]
