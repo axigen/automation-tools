@@ -9,7 +9,7 @@ For feedback and/or bugs in this script, please send an e-mail to:
 _CVSID='$Id: last-login.py,v 1.6 2016/05/23 13:34:35 nini@qa1 Exp $'
 if __name__=='__main__':
   import sys, time
-  sys.path.append('lib')
+  sys.path.append(os.path.join(sys.path[0],'lib'))
   sys.path.append('/opt/axigen/scripts/lib')
   try:
     import cli2

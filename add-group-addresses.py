@@ -10,7 +10,7 @@ For feedback and/or bugs in this script, please send an e-mail to:
 _CVSID='$Id: add-group-addresses.py,v 1.2 2016/05/23 16:57:40 nini@qa1 Exp $'
 if __name__=='__main__':
   import sys
-  sys.path.append('lib')
+  sys.path.append(os.path.join(sys.path[0],'lib'))
   sys.path.append('/opt/axigen/scripts/lib')
   try:
     import cli2

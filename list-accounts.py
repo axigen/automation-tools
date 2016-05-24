@@ -10,8 +10,8 @@ For feedback and/or bugs in this script, please send an e-mail to:
 """
 _VERID='$Id: list-accounts.py,v 1.5 2016/05/23 16:07:26 nini@qa1 Exp $'
 if __name__=='__main__':
-  import sys, time
-  sys.path.append('lib')
+  import sys, os, time
+  sys.path.append(os.path.join(sys.path[0],'lib'))
   sys.path.append('/opt/axigen/scripts/lib')
   try:
     import cli2

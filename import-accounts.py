@@ -10,6 +10,7 @@ For feedback and/or bugs in this script, please send an e-mail to:
 _CVSID='$Id: import-accounts.py,v 1.7 2016/05/23 16:38:17 nini@qa1 Exp $'
 if __name__=='__main__':
   import sys, os
+  sys.path.append(os.path.join(sys.path[0],'lib'))
   sys.path.append('lib')
   sys.path.append('/opt/axigen/scripts/lib')
   try:

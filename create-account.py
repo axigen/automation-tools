@@ -10,7 +10,7 @@ For feedback and/or bugs in this script, please send an e-mail to:
 _CVSID='$Id: create-account.py,v 1.4 2016/05/23 16:23:22 nini@qa1 Exp $'
 if __name__=='__main__':
   import sys, os
-  sys.path.append('lib')
+  sys.path.append(os.path.join(sys.path[0],'lib'))
   sys.path.append('/opt/axigen/scripts/lib')
   try:
     import cli2

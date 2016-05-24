@@ -10,7 +10,7 @@ For feedback and/or bugs in this script, please send an e-mail to:
 _CVSID='$Id: remove-accounts.py,v 1.3 2016/05/23 16:35:14 nini@qa1 Exp $'
 if __name__=='__main__':
   import sys, os
-  sys.path.append('lib')
+  sys.path.append(os.path.join(sys.path[0],'lib'))
   sys.path.append('/opt/axigen/scripts/lib')
   try:
     import cli2
