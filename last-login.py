@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python -u
 """
 Lists or deletes the accounts that have not logged since a number of days
 

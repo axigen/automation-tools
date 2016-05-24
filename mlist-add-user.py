@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python -u
 """
 Adds a local account to a specified mailing list from the same local domain
 """

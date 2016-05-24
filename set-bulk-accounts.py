@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python -u
 """
 Script that uses the CLI module to set a number of attributes for a bulk
 account list.

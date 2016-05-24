@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python -u
 """
 Creates an account in a specific domain
 """

@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python -u
 """
 Script that searches for patterns in each account personal data. Search is
 being done in the attribute names. For example, searching for businessAddress

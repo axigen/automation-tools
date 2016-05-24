@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python -u
 """
 Script that populates a group with a set of addresses found in a file given as
 parameter, with an address on each line.

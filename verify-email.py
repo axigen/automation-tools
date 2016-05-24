@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python -u
 """
 Verifies if an e-mail address exists locally in AXIGEN
 
