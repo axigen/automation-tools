@@ -8,7 +8,7 @@ Copyright (c) since 2007, Axigen Messaging. All rights reserved.
 For feedback and/or bugs in this script, please send an e-mail to:
   "AXIGEN Team" <team@axigen.com>
 """
-_VERID='$Id: list-accounts.py,v 1.5 2016/05/23 16:07:26 nini@qa1 Exp $'
+_VERID='$Id: list-accounts.py,v 1.6 2016/06/13 08:44:26 nini@qa1 Exp $'
 if __name__=='__main__':
   import sys, os, time
   sys.path.append(os.path.join(sys.path[0],'lib'))
@@ -271,9 +271,9 @@ Basic usage:
   else:
     listac=False
   if listat!="0":
-    listac=True
+    listat=True
   else:
-    listac=False
+    listat=False
   if listcr!="0":
     listcr=True
   else:
