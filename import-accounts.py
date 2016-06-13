@@ -1,4 +1,4 @@
-#! /usr/bin/env python -u
+#! /usr/bin/env python
 """
 Imports accounts from a specified file, one account per line.
 """

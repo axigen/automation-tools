@@ -1,4 +1,4 @@
-#! /usr/bin/env python -u
+#! /usr/bin/env python
 """
 Script that uses the CLI module to display all accounts within a domain, a list
 of domains, or all domains.

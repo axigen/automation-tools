@@ -1,4 +1,4 @@
-#! /usr/bin/env python -u
+#! /usr/bin/env python
 """
 Queries a LDAP server for fetching a list of accounts and displaying them in a
 specific format. Created and tested for Active Directory.

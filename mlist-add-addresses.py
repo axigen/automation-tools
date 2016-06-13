@@ -1,4 +1,4 @@
-#! /usr/bin/env python -u
+#! /usr/bin/env python
 """
 Adds addresses from a a file (each line containing "email@address full name")
 to a specific mailing list
