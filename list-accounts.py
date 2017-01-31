@@ -8,7 +8,7 @@ Copyright (c) since 2007, Axigen Messaging. All rights reserved.
 For feedback and/or bugs in this script, please send an e-mail to:
   "AXIGEN Team" <team@axigen.com>
 """
-_VERID='$Id: list-accounts.py,v 1.6 2016/06/13 08:44:26 nini@qa1 Exp $'
+_VERID='$Id: list-accounts.py,v 1.7 2017/01/30 17:22:26 nini@qa1 Exp $'
 if __name__=='__main__':
   import sys, os, time
   sys.path.append(os.path.join(sys.path[0],'lib'))
@@ -66,10 +66,12 @@ Basic usage:
                 ali  - Associated LDAP ID
                 ald  - Associated LDAP DN
                 cs   - Configuration Status
-                ms   - Mbox size
-                msc  - Mbox message count
-                mfc  - Mbox folder count
+                ms   - Mbox Size
+                msc  - Mbox message Count
+                mfc  - Mbox Folder Count
                 mss  - Mbox Storage Status
+                msq  - Mbox Allocated Quota
+
 
   Examples of usage
   - save all accounts from all domains:
@@ -122,10 +124,11 @@ Basic usage:
   listali="0"  # Associated LDAP ID
   listald="0"  # Associated LDAP DN
   listcs="0"   # Configuration Status
-  listms="0"   # Mbox size
-  listmsc="0"  # Mbox message count
-  listmfc="0"  # Mbox folder count
+  listms="0"   # Mbox Size
+  listmsc="0"  # Mbox message Count
+  listmfc="0"  # Mbox Folder Count
   listmss="0"  # Mbox Storage Status
+  listmsq="0"  # Mbox Allocated Quota
 
 
   for param in sys.argv[1:]:
@@ -246,6 +249,9 @@ Basic usage:
       continue
     if param.startswith('mss='):
       listmss=param[4:]
+      continue
+    if param.startswith('msq='):
+      listmsq=param[4:]
       continue
 
   if listAll!="0":
@@ -379,6 +385,10 @@ Basic usage:
     listmss=True
   else:
     listmss=False
+  if listmsq!="0":
+    listmsq=True
+  else:
+    listmsq=False
 
 
   if cliHost==None:
@@ -437,10 +447,11 @@ Basic usage:
       ali='';   # Associated LDAP ID
       ald='';   # Associated LDAP DN
       cs='';    # Configuration Status
-      ms='';    # Mbox size
+      ms='';    # Mbox Size
       msc='';   # Mbox message count
-      mfc='';   # Mbox folder count
+      mfc='';   # Mbox Folder Count
       mss='';   # Mbox Storage Status
+      msq='';   # Mbox Allocated Quota
       infoStr=''
 
       c.goto_root_context()
@@ -520,6 +531,12 @@ Basic usage:
           mfc='\n\tMbox folder count: %s' % myRegistry['Mbox folder count']
         if listmss or listAll:
           mss='\n\tMbox Storage Status: %s' % myRegistry['Mbox Storage Status']
+
+      if listmsq or listAll:
+          c.config('quotas')
+          aquota_tms=c.get_show('totalMessageSize')
+          c.back()
+          mss='\n\tMbox Allocated Quota: %s Kb' % aquota_tms
 
       if listNames or listAll:
         c.config_contactinfo()
