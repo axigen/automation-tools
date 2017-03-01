@@ -19,7 +19,7 @@ Copyright (c) since 2006, GECAD Technologies. All rights reserved.
 Please send any bugs and/or feedback related to this class to:
   AXIGEN Team <team@axigen.com>
 """
-CVSID='$Id: cli2.py,v 1.27 2016/05/04 10:44:12 nini@qa1 Exp $'
+CVSID='$Id: cli2.py,v 1.27 2017/03/01 15:44:12 nini@qa1 Exp $'
 __version__=CVSID.split()[2]
 __all__=['CLI', 'strtime2epoch']
 
@@ -1489,6 +1489,30 @@ class CLI(CLIBase):
     self.update_kav()
     data=self.get_show_databaseUpdateStatus()
     return data
+
+  def getCatchAll(self, domain):
+    """
+    Returns domain's catchall accountName
+    """
+    self.goto_root_context()
+    self.update_domain(domain)
+
+    catchAllType = self.get_show('catchAllType')
+
+    if catchAllType == 'disabled':
+        return 'disabled'
+    elif catchAllType == 'account':
+        return re.sub('"','',self.get_show('catchAllAccountName')) + '@' + domain
+    else:
+        return self.get_show('catchAllFolderName')
+
+  def getDomainData(self, domain=None):
+    """
+    Gets some domain's attributes
+    """
+    self.goto_root_context()
+    self.update_domain(self.getDomainIfExists(domain))
+    return self.get_show()
 
   def mListAddUser(self, list=None, domain=None, email=None, name=None):
     """
